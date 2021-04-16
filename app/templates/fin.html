@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}{{ super() }}{% endblock %}
+
+{% block body %}
+
+    {% block redirect %}
+        <a class="change-language" onclick="window.location.href='{{ url_for('index')}}'"
+           id="change-language">{{ dict['language'] }}</a>
+    {% endblock %}
+
+    {% block top %}{{ super() }}{% endblock %}
+
+    {% block form %}
+        <form action="/fin/translate" method="GET">
+            <input class="search-box" name="word" type="text" required>
+            <button type="submit" class="check-btn"><i class="fas fa-search"></i></button>
+        </form>
+    {% endblock %}
+
+    {% block rest %}{{ super() }}{% endblock %}
+
+{% endblock %}

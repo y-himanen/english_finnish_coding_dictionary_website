@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta name="viewport" content="width=device-width" initial-scale=1.0/>
+        <link href="{{ url_for('static', filename='css/app.css')}}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='images/code.png')}}" rel="shortcut icon">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/411a6cabce.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/helpers.js')}}"></script>
+        {% block head %}
+            <title>{{ dict['title'] }}</title>
+        {% endblock %}
+    </head>
+    <body>
+    {%block body%}
+        {% block redirect %} {% endblock %}
+
+        {% block top %}
+        <h1 id="heading">{{ dict['heading'] }}</h1>
+        <div class="search-container">
+        {% endblock %}
+
+            {% block form %}
+            {% endblock %}
+
+        {%block rest %}
+        </div>
+        <div class="result-container">
+            {% if results %}
+                {% for result in results %}
+                    <h2 class="result">{{ result }}</h2>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="contact-container">
+            <h2 id="suggestion">{{ dict['suggestion'] }}</h2>
+            <button class="mail-to" onclick="location.href='mailto:devs.dictionary@gmail.com';"
+                    id="mail-to" title="devs.dictionary@gmail.com"><i class="fas fa-envelope"></i>{{ dict['mail_to'] }}</button>
+        </div>
+        {% endblock %}
+
+    {% endblock %}
+    </body>
+</html>
